@@ -28,7 +28,7 @@
           </div>
           <div class="list-group list-group-flush">
             <a
-              {{-- href="{{ route('admin-dashboard') }}" --}}
+              href="{{ route('home') }}"
               class="list-group-item list-group-item-action"
               >Dashboard</a>
             <a
@@ -36,7 +36,7 @@
               class="list-group-item list-group-item-action"
               >Products</a>
             <a
-              {{-- href="{{ route('category.index') }}" --}}
+              href="{{ route('category.index') }}"
               class="list-group-item list-group-item-action"
               >Categories</a>
             <a
