@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         if(request()->ajax()){
-            $query = Category::query();
+            $query = User::query();
             return Datatables::of($query)
             ->addColumn('action', function($item) {
                  return '
@@ -27,10 +27,10 @@ class CategoryController extends Controller
                                 Action
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="' . route('category.edit', $item->id) . '">
+                                <a class="dropdown-item" href="' . route('user.edit', $item->id) . '">
                                     Edit
                                 </a>
-                                <form action="'. route('category.destroy', $item->id) .'" method="POST" >
+                                <form action="'. route('user.destroy', $item->id) .'" method="POST" >
                                     '. method_field('delete') . csrf_field() . '
                                     <button type="submit" class="dropdown-item text-danger" >
                                         Delete
@@ -43,7 +43,7 @@ class CategoryController extends Controller
             })->make()
             ;
         }
-        return view('pages.category.index');
+        return view('pages.user.index');
     }
 
     /**
@@ -53,7 +53,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('pages.category.create');
+        return view('pages.user.create');
     }
 
     /**
@@ -65,8 +65,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        Category::create($data);
-        return redirect()->route('category.index');
+        User::create($data);
+        return redirect()->route('user.index');
     }
 
     /**
@@ -88,8 +88,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $item = Category::findOrFail($id);
-        return view('pages.category.edit',[
+        $item = User::findOrFail($id);
+        return view('pages.user.edit',[
             'item' => $item,
         ]);
     }
@@ -104,9 +104,9 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $item = Category::findOrFail($id);
+        $item = User::findOrFail($id);
         $item->update($data);
-        return redirect()->route('category.index');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -117,8 +117,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $item = Category::findOrFail($id);
+        $item = User::findOrFail($id);
         $item->delete();
-        return redirect()->route('category.index');
+        return redirect()->route('user.index');
     }
 }

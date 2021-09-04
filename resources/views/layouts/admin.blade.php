@@ -32,7 +32,7 @@
               class="list-group-item list-group-item-action"
               >Dashboard</a>
             <a
-              {{-- href="{{ route('product.index') }}" --}}
+              href="{{ route('product.index') }}"
               class="list-group-item list-group-item-action"
               >Products</a>
             <a
@@ -40,7 +40,7 @@
               class="list-group-item list-group-item-action"
               >Categories</a>
             <a
-              href="#"
+              href="{{ route('user.index') }}"
               class="list-group-item list-group-item-action"
               >Users</a>
             
